@@ -40,7 +40,7 @@ class _ChatsState extends State<Chats> {
         children: [
           Expanded(
             child: StreamBuilder(
-              stream: FirebaseFirestore.instance.collection("user").snapshots(),
+              stream: FirebaseFirestore.instance.collection("user") .orderBy("createdAt", descending: false).snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
@@ -55,7 +55,8 @@ class _ChatsState extends State<Chats> {
                 }
                 return ListView.builder(
                   shrinkWrap: true,
-                  reverse: false,
+                  
+                  physics: BouncingScrollPhysics(),
                   itemCount: docs.length,
                   itemBuilder: (context, index) {
                     final data = docs[index];
@@ -128,13 +129,16 @@ class _ChatsState extends State<Chats> {
                 padding: const EdgeInsets.all(8.0),
                 child: MaterialButton(
                   height: 60,
+                  
                   color: Colors.black12,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: () async {
                     if (formkey.currentState!.validate()) {
+                      
                       try {
+                        
                         await Firebasepage().createdata(
                             FirebaseAuth.instance.currentUser!.email.toString(),
                             inchats.text);
@@ -144,6 +148,7 @@ class _ChatsState extends State<Chats> {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(SnackBar(content: Text("Error: $e")));
                       }
+                      
                     }
                   },
                   child: Icon(Icons.send),

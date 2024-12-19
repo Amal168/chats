@@ -77,7 +77,7 @@ class Firebasesurvices {
 class Firebasepage {
   Future createdata(String email, String chats) async {
     final ref = FirebaseFirestore.instance.collection("user");
-    return await ref.add({'email':email, 'chats': chats});
+    return await ref.add({'email':email, 'chats': chats,'createdAt': Timestamp.now(),});
   }
 
    Future updatedata(String chats, {String? documentId}) async {
