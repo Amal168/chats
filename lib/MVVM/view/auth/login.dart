@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:chats_project/MVVM/model/firebaseSurvices.dart';
 import 'package:chats_project/MVVM/view/auth/forgot.dart';
 import 'package:chats_project/MVVM/view/auth/register.dart';
+import 'package:chats_project/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(220, 220, 220, 1),
+      backgroundColor: greyColor,
       body: Center(
         child: Form(
           key: formkey,
