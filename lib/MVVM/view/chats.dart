@@ -87,7 +87,9 @@ class _ChatsState extends State<Chats> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton:
           Container(
-            decoration: BoxDecoration(),
+            decoration: BoxDecoration(
+              color: Colors.white
+            ),
             margin: EdgeInsets.all(3),
             height: 70,
             child: Row(crossAxisAlignment: CrossAxisAlignment.end,
